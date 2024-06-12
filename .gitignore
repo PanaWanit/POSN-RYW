@@ -1,4 +1,5 @@
 tex/*.pdf
+.vscode/**
 .DS_Store
 
 
