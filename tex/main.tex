@@ -1,0 +1,149 @@
+\documentclass{beamer}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{colortbl}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{xcolor}
+
+\definecolor{myblue}{RGB}{20,105,176}
+\definecolor{constants}{RGB}{127,39,84}
+\definecolor{character}{RGB}{100,169,57}
+\setbeamertemplate{footline}[page number]
+\lstdefinestyle{deltaj}{
+        belowcaptionskip=1\baselineskip,
+        breaklines=true,
+        columns=fullflexible,
+        frame=single,
+        xleftmargin=\parindent,
+        language=Python,
+        escapeinside={(*}{*)},
+        stepnumber=1,
+        tabsize=2,
+        numberblanklines=false,
+        numberstyle=\normalfont\footnotesize,
+        basicstyle=\footnotesize\ttfamily,
+        keywordstyle=\bfseries\color{green!40!black},
+        commentstyle=\itshape\color{purple!40!black},
+        identifierstyle=\color{blue},
+        stringstyle=\color{orange}, 
+        showstringspaces=false
+    }
+\lstset{style=deltaj}
+
+\beamertemplatenavigationsymbolsempty
+\usetheme{Berlin}
+
+\title[Basic Python]{Basic Python Programming}
+\subtitle[POSN Computer]{for POSN Computer}
+\author[Pana W.]{Pana Wanitchollakit}
+\date{2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Basic}
+
+\subsection[Data types]{Data types}
+\begin{frame}{Data types}
+    \begin{block}{Data types}
+        \lstinputlisting{source/datatypes.py}
+    \end{block}
+    \begin{block}{Type conversion}
+        \lstinputlisting{source/typeconversion.py}
+    \end{block}
+\end{frame}
+
+
+\subsection[I/O]{Input and Output}
+\begin{frame}{Input and Output}
+    A function named \textbf{input} is used for only \textbf{string} input. \\
+    The \textbf{input} function will receive input until you press the $<$Enter$>$.
+    \begin{block}{Input}
+        \lstinputlisting{source/input.py}
+        If you want an integer input, you must convert it to an integer, i.e.,
+        \lstinputlisting{source/int_input.py}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Input and Output}
+    A \textbf{print} function is used to show output on your commandline. \\
+    Note: \textbf{print} will add an extra character, namely a newline character "\textbackslash n" at the end of your output.
+    \begin{block}{Output}
+        \lstinputlisting{source/print.py}
+    \end{block}
+\end{frame}
+
+\subsection[Operator]{Operator}
+\subsubsection{String operator}
+\begin{frame}{String operator}
+    \begin{block}{Plus operator (+)}
+        We can concatenate the string using \textbf{+} operator
+        \lstinputlisting{source/plus_string.py}
+    \end{block}
+\end{frame}
+
+\subsubsection{Arithmetic Operators}
+\begin{frame}{Arithmetic Operators}
+    \begin{block}{Arithmetic}
+        \lstinputlisting{source/arithmetic.py}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Arithmetic operator Precedence}
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Order & Operator & Associativity Type \\
+        \hline
+        1     & ()       & -                  \\
+        \hline
+        2     & **       & right to left      \\
+        \hline
+        3     & *,/,//   & left to right      \\
+        \hline
+        4     & +, -     & left to right      \\
+        \hline
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Arithmetic operator Precedence}
+    \begin{example}
+        \lstinputlisting{source/arith_precedence/e1.py}
+        $$
+            10 + (3\times4) + (2^3 \times 4) + 5 = 59
+        $$
+    \end{example}
+\end{frame}
+
+\begin{frame}{Arithmetic operator Precedence}
+    \begin{example}
+        \lstinputlisting{source/arith_precedence/e2.py}
+        $$
+            4 \times 5^{3^2} \times 7 = 4 \times 5^9 \times 7
+        $$
+    \end{example}
+\end{frame}
+
+\begin{frame}{Arithmetic operator Precedence}
+    \begin{example}
+        \lstinputlisting{source/arith_precedence/e3.py}
+        $$
+            \left \lfloor \frac{\left \lfloor \frac{5 \times 3}{4} \right\rfloor \times 10}{7} \right \rfloor
+        $$
+        Note: \\
+        Floor function \href{https://en.wikipedia.org/wiki/Floor_and_ceiling_functions}{\beamergotobutton{Definition}} : $\lfloor x \rfloor$ \\
+        Example: $\lfloor -2.5 \rfloor = -3$, $\lfloor 2.5 \rfloor = 2$
+    \end{example}
+\end{frame}
+
+\end{document}
