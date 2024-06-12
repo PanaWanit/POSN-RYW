@@ -3,6 +3,7 @@
 \usepackage{colortbl}
 \usepackage{adjustbox}
 \usepackage{mathtools}
+\usepackage{hhline}
 
 \usepackage{listings}
 \usepackage{color}
@@ -90,6 +91,10 @@
         We can concatenate the string using \textbf{+} operator
         \lstinputlisting{source/plus_string.py}
     \end{block}
+    \begin{block}{Multiplication operator (*)}
+        Just like multiplying in arithmetic, we concatenate (plus) a string multiple times instead.
+        \lstinputlisting{source/mul_string.py}
+    \end{block}
 \end{frame}
 
 \subsubsection{Arithmetic Operators}
@@ -99,33 +104,30 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Arithmetic operator Precedence}
+\begin{frame}{Arithmetic Operators Precedence}
     \centering
     \begin{tabular}{|c|c|c|c|}
         \hline
-        Order & Operator & Associativity Type \\
+        Order & Operator     & Associativity Type \\
         \hline
-        1     & ()       & -                  \\
+        1     & ()           & -                  \\
         \hline
-        2     & **       & right to left      \\
+        2     & **           & right to left      \\
         \hline
-        3     & *,/,//   & left to right      \\
+        3     & *, /, //, \% & left to right      \\
         \hline
-        4     & +, -     & left to right      \\
+        4     & +, -         & left to right      \\
         \hline
     \end{tabular}
 \end{frame}
 
-\begin{frame}{Arithmetic operator Precedence}
+\begin{frame}
     \begin{example}
         \lstinputlisting{source/arith_precedence/e1.py}
         $$
             10 + (3\times4) + (2^3 \times 4) + 5 = 59
         $$
     \end{example}
-\end{frame}
-
-\begin{frame}{Arithmetic operator Precedence}
     \begin{example}
         \lstinputlisting{source/arith_precedence/e2.py}
         $$
@@ -134,7 +136,7 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Arithmetic operator Precedence}
+\begin{frame}
     \begin{example}
         \lstinputlisting{source/arith_precedence/e3.py}
         $$
@@ -144,6 +146,48 @@
         Floor function \href{https://en.wikipedia.org/wiki/Floor_and_ceiling_functions}{\beamergotobutton{Definition}} : $\lfloor x \rfloor$ \\
         Example: $\lfloor -2.5 \rfloor = -3$, $\lfloor 2.5 \rfloor = 2$
     \end{example}
+\end{frame}
+
+\section[str\&list]{String and List}
+\subsection{List}
+\begin{frame}{List}
+    In short, it's a box of variables. \\
+    \textbf{String} is a special type of list (all elements of a list are characters).
+    \begin{example}
+        \lstinputlisting{source/list.py}
+    \end{example}
+
+    \begin{block}{List methods (function)}
+        \lstinputlisting{source/list_method.py}
+    \end{block}
+\end{frame}
+
+\subsection{Operators}
+\begin{frame}{String \& List Operators}
+    \begin{block}{Length}
+        The \textbf{len} function can be used to count the length of a string.
+        \lstinputlisting{source/length.py}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Indexing}
+        You can access a character in string or a element in list with a [ ]. \\
+        Note: Indexing in Python starts with 0 and can be accessed with a negative index (reversed index).
+        \[
+            \begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+                \hline
+                idx     & 0   & 1   & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10 \\
+                \hline
+                str     & H   & e   & l  & l  & o  & \  & W  & o  & r  & l  & d  \\
+                \hline
+                idx_{r} & -11 & -10 & -9 & -8 & -7 & -6 & -5 & -4 & -3 & -2 & -1 \\
+                \hline
+            \end{array}
+        \]
+        \lstinputlisting{source/string_indexing.py}
+
+    \end{block}
 \end{frame}
 
 \end{document}
