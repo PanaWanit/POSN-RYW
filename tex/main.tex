@@ -324,10 +324,92 @@
 \section{Loop}
 \subsection{For Loop}
 \begin{frame}{For Loop}
-    \begin{block}{\textbf{range} object}
+    \begin{block}{\textbf{range} $\href{https://docs.python.org/3/library/stdtypes.html\#ranges}{\beamergotobutton{Documentation}}$}
+        \textbf{range} is an iterable object (can be converted into a \textbf{list}).
+    \end{block}
+    \begin{example}
+        \lstinputlisting{source/range.py}
+        Note: \textbf{stop} exclusive.
+    \end{example}
+\end{frame}
 
+\begin{frame}
+    \begin{block}{\textbf{for} keyword}
+        The \textbf{for} keyword is used to iterate an iterable object with the keyword \textbf{in}.
+    \end{block}
+    \begin{example}
+        \lstinputlisting{source/for.py}
+        \textbf{Note}: \textbf{end} keyword in \textbf{print} change "\textbackslash n" to the specified string.
+    \end{example}
+\end{frame}
+
+\subsection{While Loop}
+\begin{frame}{While Loop}
+    \begin{block}{\textbf{while} keyword}
+        The \textbf{while} keyword is like the \textbf{if-else} block, but \textbf{while} loop does action until the condition is rejected.
+    \end{block}
+    \begin{block}{Variable assignment}
+        You can assign new value in declared variable.
+        \lstinputlisting{source/assignment.py}
     \end{block}
 \end{frame}
-\subsection{While Loop}
+
+\begin{frame}
+    \begin{example}
+        \lstinputlisting{source/while.py}
+    \end{example}
+\end{frame}
+
+\subsection[Nested Loop]{Nested Loop}
+\begin{frame}{Nested Loop}
+    Loop can be nested.
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{example}
+                \lstinputlisting{source/nested.py}
+            \end{example}
+        \end{column}
+        \begin{column}{0.5\textwidth}  %%<--- here
+            \begin{block}{Output}
+                * \\
+                ** \\
+                *** \\
+                **** \\
+                ***** \\
+                ****** \\
+                ******* \\
+                ******** \\
+                ********* \\
+            \end{block}
+
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{example}
+                \lstinputlisting{source/nested2.py}
+            \end{example}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Output}
+                yxxxxxxxxx\\
+                yyxxxxxxxx\\
+                yyyxxxxxxx\\
+                yyyyxxxxxx\\
+                yyyyyxxxxx\\
+                yyyyyyxxxx\\
+                yyyyyyyxxx\\
+                yyyyyyyyxx\\
+                yyyyyyyyyx\\
+                yyyyyyyyyy
+            \end{block}
+
+        \end{column}
+    \end{columns}
+\end{frame}
 
 \end{document}
