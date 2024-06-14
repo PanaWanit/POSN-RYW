@@ -1,0 +1,306 @@
+% !TEX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+%% ---- LaTeX syntax utility package ---- %%
+\usepackage{etoolbox}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%% ---- Set up paper margin ---- %%
+\usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%% ---- Set up fonts and encoding ---- %%
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Enable line breaks for Thai text
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 2pt minus 1pt
+
+% Set up Thai fonts
+\setmainfont[%
+    ItalicFont={Laksaman-Italic.otf},%
+    BoldFont={Laksaman-Bold.otf},%
+    BoldItalicFont={Laksaman-BoldItalic.otf},%
+    Script=Thai,%
+    Scale=MatchLowercase,%
+    WordSpace=1.25,%
+    Mapping=tex-text,%
+]{Laksaman.otf}
+
+
+%% ---- Load line spacing package ---- %%
+\usepackage{setspace}
+
+% Introducing hair space 
+\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
+
+
+%% ---- Set up hyperlinks and colors ---- %%
+\usepackage{xcolor}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{%
+    colorlinks,%
+    linkcolor={red!50!black},%
+    citecolor={blue!50!black},%
+    urlcolor={blue!80!black},%
+}
+\renewcommand\UrlFont{\normalfont}
+
+
+%% ---- Documents start here ---- %%
+\title{
+	Logic (ตรรกศาสตร์)
+}
+\author{
+    Pana Wanitchollakit
+}
+\date{
+%2024
+}
+
+\begin{document}
+\maketitle
+\section*{ประพจน์ (proposition)}
+ประโยคบอกเล่าหรือประโยคปฏิเสธซึ่งบอกได้ว่า\textbf{จริง (True)} หรือ\textbf{เท็จ (False)}
+\subsection*{ตัวดำเนินการทางตรรกศาสตร์ (Logical operators)}
+ให้ $p, q$ เป็นประพจน์
+\begin{itemize}
+    \item นิเสธ (negation): $\neg\ p$
+    \item และ (and): $p\land q$
+    \item หรือ (or): $p \lor q$
+    \item ถ้า$\ldots$แล้ว (implication): $p \rightarrow q$
+    \item ก็ต่อเมื่อ (if and only if): $p\leftrightarrow q$
+\end{itemize}
+\subsection*{ตารางค่าความจริง (Truth table)}
+\quad ตารางที่แสดงค่าความจริงทุกความเป็นไปได้ทั้งหมดของการกำหนดค่าทุกประพจน์ โดยจะมีทั้งหมด $2^N$ แถว เมื่อ $N$ เป็นจำนวนประพจน์ทั้งหมด. \\
+\rule{0pt}{4ex}
+ตัวอย่างเช่นเรามี 2 ประพจน์ได้แก่ $p, q$\\
+\begin{center}
+    \begin{tabular}{|c|c||c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $\neg p$ & $p \land q$ & $p \lor q$ & $p \rightarrow q$ & $p \leftrightarrow q$ \\
+        \hline
+        $T$ & $T$ & $F$      & $T$         & $T$        & $T$               & $T$                   \\
+        \hline
+        $T$ & $F$ & $F$      & $F$         & $T$        & $F$               & $F$                   \\
+        \hline
+        $F$ & $T$ & $T$      & $F$         & $T$        & $T$               & $F$                   \\
+        \hline
+        $F$ & $F$ & $T$      & $F$         & $F$        & $T$               & $T$                   \\
+        \hline
+    \end{tabular}
+\end{center}
+\subsection*{สมมูล (equivalence, $\equiv$)}
+\quad ประพจน์ใดๆ 2 ประพจน์จะสมมูลกัน \textbf{ก็ต่อเมื่อ} ทั้งสองประพจน์ให้ค่าในตารางความจริง\textbf{เหมือนกันทั้งหมด} \\
+\rule{0pt}{4ex}
+ตัวอย่างเช่น $p\rightarrow q \equiv \neg p \lor q$ (* ใช้ในการแก้โจทย์ที่อยู่ในรูป ถ้า$\ldots$แล้ว บ่อย)
+\begin{center}
+    \begin{tabular}{|c|c||c||c|c|}
+        \hline
+        $p$ & $q$ & $\neg p$ & $\neg p \lor q$ & $p \rightarrow q$ \\
+        \hline
+        $T$ & $T$ & $F$      & $T$             & $T$               \\
+        \hline
+        $T$ & $F$ & $F$      & $F$             & $F$               \\
+        \hline
+        $F$ & $T$ & $T$      & $T$             & $T$               \\
+        \hline
+        $F$ & $F$ & $T$      & $T$             & $T$               \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Logical equivalences}
+\quad กำหนดให้ $p,q,r$ เป็นประพจน์ และ $T, F$ หมายถึง \textbf{จริง} และ \textbf{เท็จ} ตามลำดับ. \\
+\paragraph{if\ldots then, if and only if ***}
+\begin{itemize}
+    \item $p \rightarrow q \equiv \neg p \lor q$
+    \item $p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$
+\end{itemize}
+\paragraph{contra-positive ****}
+\begin{itemize}
+    \item $p \rightarrow q \equiv \neg q \rightarrow \neg p$
+\end{itemize}
+\paragraph{Identity laws *}
+\begin{itemize}
+    \item $p \land T \equiv p $
+    \item $p \lor F \equiv p $
+\end{itemize}
+
+\paragraph{Domination laws *}
+\begin{itemize}
+    \item $p \land F \equiv F$
+    \item $p \lor T \equiv T$
+\end{itemize}
+
+\paragraph{Idempotent laws}
+\begin{itemize}
+    \item $p \land p \equiv p$
+    \item $p \lor p \equiv p$
+\end{itemize}
+
+\paragraph{Double negation law}
+\begin{itemize}
+    \item $\neg(\neg p) \equiv p$
+\end{itemize}
+
+\paragraph{Commutative law}
+\begin{itemize}
+    \item $p\land q \equiv q \land p$
+    \item $p \lor q \equiv q \lor p$
+\end{itemize}
+
+\paragraph{Associative laws}
+\begin{itemize}
+    \item $(p \land q) \land r \equiv p \land (q \land r)$
+    \item $(p \lor q) \lor r \equiv p \lor (q \lor r)$
+\end{itemize}
+
+\paragraph{Distributive laws *}
+\begin{itemize}
+    \item $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$
+    \item $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+\end{itemize}
+
+\paragraph{Absorption laws ***}
+\begin{itemize}
+    \item $p \lor (p \land q) \equiv p$
+    \item $p \land (p \lor q) \equiv p$
+\end{itemize}
+\paragraph{Negation laws *}
+\begin{itemize}
+    \item $p \land \neg p \equiv F$
+    \item $p \lor \neg p \equiv T$
+\end{itemize}
+
+\subsubsection*{Note(Trick?)}
+สำหรับน้องที่จำสูตรไม่ได้วิธีแนะนำคือลองวาด Venn-Euler diagram โดยมองว่าประพจน์เป็นเซ็ต และ $T$ คือ space ($\mathcal{U}$) และ $F$ คือเซตว่าง ($\phi$) และมองกระบวนการทางตรรกศาสตร์เป็นกระบวนการทางเซตแทน. \\
+\begin{itemize}
+    \item $\land$ มองเป็น $\cap$
+    \item $\lor$ มองเป็น $\cup$
+    \item $\neg p$ มองเป็น $\bar{A}$
+\end{itemize}
+
+
+\rule{0pt}{4ex}
+Fact: กระบวนการทางเซ็ต (Union, Intersect, etc.) ถูกนิยามโดยตัวดำเนินการทางตรรกศาสตร์
+ตัวอย่างเช่น
+\begin{itemize}
+    \item $A \cup B = \left\{x \in \mathcal{U} | x \in A \lor x\in B \right\}$
+    \item $A \cap B = \left\{x \in \mathcal{U}| x \in A \land x\in B \right\}$
+    \item $\bar{A} = \left\{x \in \mathcal{U}| \neg( x \in A) \right\} = \left\{x \in \mathcal{U}| x \not\in A\right\}$
+\end{itemize}
+\hrulefill
+\newpage
+
+\section*{สัจนิรันดร์ และ ความสมเหตุสมผล (Tautology and Valid argument)}
+\subsection*{สัจนิรันดร์(Tautology)}
+\quad ประพจน์ประกอบ ที่ไม่ว่าจะระบุค่าความจริงในแต่ละประพจน์ใดๆ นั้นจะให้ค่า\textbf{เป็นจริงเสมอ}
+\subsubsection*{ตัวอย่างโจทย์}
+จงตรวจสอบว่าประพจน์นี้เป็นสัจนิรันดร์หรือไม่
+$$
+    \left[ (p \rightarrow q) \land (q \rightarrow r) \right] \rightarrow (p \rightarrow r)
+$$
+\rule{0pt}{35ex}
+\subsection*{ความสมเหตุสมผล (Valid argument)}
+\quad ประพจน์ประกอบด้วย\textbf{เหตุ}หลายประพจน์และ\textbf{ผล}หนึ่งประพจน์ จะสมเหตุสมผล ก็ต่อเมื่อ นำ\textbf{เหตุมาเชื่อมด้วย และ ทั้งหมด} แล้ว เชื่อมเหตุทั้งหมดกับผลด้วย\textbf{ถ้า...แล้ว}เป็นประพจน์ใหม่ แล้วประพจน์นั้นเป็น \textbf{สัจนิรันดร์}
+
+\subsubsection*{ตัวอย่างโจทย์}
+เหตุ
+\begin{itemize}
+    \item $p \rightarrow q$
+    \item $q \rightarrow r$
+\end{itemize}
+ผล
+\begin{itemize}
+    \item $p \rightarrow r$
+\end{itemize}
+ได้ประพจน์ที่ต้องตรวจสอบว่า
+$$
+    \left[ (p \rightarrow q) \land (q \rightarrow r) \right] \rightarrow (p \rightarrow r)
+$$
+\hrulefill
+
+\newpage
+\section*{กฎการให้เหตุผล (Rule of Inference)}
+มีหลายเหตุการณ์ ต้องการทราบผลของเหตุการณ์
+
+\paragraph{Modus ponens}
+
+\begin{flalign*}
+     & p                          \\
+     & p \rightarrow q            \\
+     & \noindent\rule{2cm}{0.1pt} \\
+     & \therefore q
+\end{flalign*}
+
+\paragraph{Modus tollens}
+
+\begin{flalign*}
+     & \neg q                     \\
+     & p \rightarrow q            \\
+     & \noindent\rule{2cm}{0.1pt} \\
+     & \therefore \neg p
+\end{flalign*}
+
+\subsection*{ตัวอย่างโจทย์ (สอวน. คอมพิวเตอร์ 2560 ข้อที่ 29)}
+เหตุ
+\begin{itemize}
+    \item ถ้าฝนตกแล้วน้ำท่วม
+    \item ถ้าน้ำท่วมแล้วจะเกิดโรคระบาด
+    \item ถ้าเกิดโรคระบาดแล้วประชาชนยากจน
+    \item ประชาชนไม่ยากจน
+\end{itemize}
+\rule{0pt}{15ex}
+\hrulefill
+
+\newpage
+\section*{ประโยคเปิด และ ตัวบ่งปริมาณ (Predicate logic and Quantifier)}
+\subsection*{ประโยคเปิด (Predicate logic, Open sentence)}
+\quad ประโยคเปิด $P(x)$ จะเป็นประพจน์ก็ต่อเมื่อมีการใส่ตัวแปร x เข้าไปในประโยค เช่น \\
+\rule{0pt}{4ex}
+$P(x)$ คือ $x$ มาเข้าค่ายอบรม สอวน. ที่ระยองวิทฯ (ประโยคนี้ยังไม่เป็นประพจน์ เพราะไม่รู้ว่า $x$ คือใคร)
+\begin{itemize}
+    \item $P(\text{หยู})$ - หยู มาเข้าค่ายอบรม สอวน. ที่ระยองวิทฯ (เป็นประพจน์เพราะตอบได้ว่าหยูเข้าค่ายหรือไม่เข้าค่าย)
+    \item $P(\text{ทหารเรือ})$ - ทหารเรือ มาเข้าค่ายอบรม สอวน. ที่ระยองวิทฯ
+\end{itemize}
+\rule{0pt}{4ex}
+$Q(x)$ คือ $x < 10$ (ยังตอบไม่ได้ว่าจริงหรือเท็จเพราะยังไม่รู้ค่า $x$)
+\begin{itemize}
+    \item $Q(1)$ - $1 < 10$ (เป็นจริง)
+    \item $Q(11)$ - $11 < 10$ (เป็นเท็จ)
+\end{itemize}
+
+\subsection*{ตัวบ่งปริมาณ (Quantifier)}
+\quad กำหนดให้ทุก $x$ อยู่ใน space $\mathcal{U}$
+
+\subsubsection*{Universal Quantifier (For all $\forall$)}
+$\forall_x\left[ P(x) \right]$ จะเป็น \textbf{จริงได้ในกรณีเดียว} เมื่อ $P(x)$ ในทุก $x \in \mathcal{U}$ เป็น\textbf{จริงทั้งหมด} ตัวอย่างเช่น \\
+\rule{0pt}{2.5ex}
+
+ให้ $\mathcal{U} = \{1,2,3,4,5,6\}$ และ $Q(x)$ คือ $x < 10$\\
+\rule{0pt}{4ex}
+$\therefore \forall_x[Q(x)] \equiv T$ (เพราะทุกเลขใน $\mathcal{U}$ น้อยกว่า $10$ หมด)
+
+\subsubsection*{Existential Quantifier (For some $\exists$)}
+$\exists_x\left[ P(x) \right]$ จะเป็น \textbf{เท็จได้ในกรณีเดียว} เมื่อ $P(x)$ ในทุก $x \in \mathcal{U}$ เป็น\textbf{เท็จทั้งหมด} ตัวอย่างเช่น \\
+\rule{0pt}{2.5ex}
+
+ให้ $\mathcal{U} = \{10,20,30,40,50\}$ และ $Q(x)$ คือ $x < 10$\\
+\rule{0pt}{4ex}
+$\therefore \exists_x[Q(x)] \equiv F$ (เพราะทุกเลขใน $\mathcal{U}$ มากกว่าหรือเท่ากับ $10$ หมด)
+
+\subsubsection*{การกระจายนิเสธเข้าตัวบ่งปริมาณ (Negating Quantified expression)}
+\begin{itemize}
+    \item $\neg\forall_x[P(x)] \equiv \exists_x[\neg P(x)]$
+    \item $\neg\exists_x[P(x)] \equiv \forall_x[\neg P(x)]$
+\end{itemize}
+(เปลี่ยนตัวบ่งปริมาณเป็นอีกแบบแล้วกระจายนิเสธเข้าประพจน์ได้เลย) \\
+ตัวอย่างเช่น \\
+$$
+    \neg \forall_x[x < 10] \equiv \exists_x[\neg( x < 10)] \equiv \exists_x[x \ge 10]
+$$
+
+\end{document}

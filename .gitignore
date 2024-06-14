@@ -1,4 +1,5 @@
-tex/*.pdf
+python-slide/*.pdf
+python-slide/*.pdf
 .vscode/**
 .DS_Store
 
