@@ -1,4 +1,4 @@
-s = "Hello World"  # String (can you either '' or "")
+s = "Hello World"  # String (can use either '' or "")
 i = 42  # Integer
 d = 3.14159  # Float
-42 = i # // Error
+b = True  # Boolean

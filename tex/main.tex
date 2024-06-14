@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=43]{beamer}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{colortbl}
 \usepackage{adjustbox}
@@ -36,7 +36,8 @@
 \lstset{style=deltaj}
 
 \beamertemplatenavigationsymbolsempty
-\usetheme{Berlin}
+\usetheme{Ilmenau}
+% \usecolortheme{beaver}
 
 \title[Basic Python]{Basic Python Programming}
 \subtitle[POSN Computer]{for POSN Computer}
@@ -138,7 +139,7 @@
     \begin{example}
         \lstinputlisting{source/arith_precedence/e1.py}
         $$
-            10 + (3\times4) + (2^3 \times 4) + 5 = 59
+            10 + (3\times4) + (2^3 \times 4) - \left((4\times5) - \frac{25}{5^2}\right) + 5 = 40
         $$
     \end{example}
     \begin{example}
@@ -300,10 +301,10 @@
     \begin{example}
         \lstinputlisting{source/if_else.py}
         \begin{itemize}
-            \item if $x \le 10$ : do if
-            \item if $x \le 25$ : do elif 1
-            \item if $x \le 50$ : do elif 2
-            \item if $x > 50$ : do else
+            \item \makebox[2.5cm][l]{if $x \le 10$} : do if
+            \item \makebox[2.5cm][l]{if $10 < x \le 25$} : do elif 1
+            \item \makebox[2.5cm][l]{if $25 < x \le 50$} : do elif 2
+            \item \makebox[2.5cm][l]{if $x > 50$} : do else
         \end{itemize}
     \end{example}
 \end{frame}
@@ -312,10 +313,10 @@
     \begin{alertblock}{Many if vs if-else}
         \lstinputlisting{source/many_if.py}
         \begin{itemize}
-            \item if $x \le 10$ : f ef1 ef2
-            \item if $x \le 25$ : ef1 ef2
-            \item if $x \le 50$ : ef2
-            \item if $x > 50$ : e
+            \item \makebox[2.5cm][l]{if $x \le 10$} : f ef1 ef2
+            \item \makebox[2.5cm][l]{if $10<x \le 25$} : ef1 ef2
+            \item \makebox[2.5cm][l]{if $25<x \le 50$} : ef2
+            \item \makebox[2.5cm][l]{if $x > 50$} : e
         \end{itemize}
     \end{alertblock}
 
