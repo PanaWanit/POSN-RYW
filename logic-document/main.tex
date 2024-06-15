@@ -175,8 +175,8 @@
     \item $p \lor \neg p \equiv T$
 \end{itemize}
 
-\subsubsection*{Note(Trick?)}
-สำหรับน้องที่จำสูตรไม่ได้วิธีแนะนำคือลองวาด Venn-Euler diagram โดยมองว่าประพจน์เป็นเซ็ต และ $T$ คือ space ($\mathcal{U}$) และ $F$ คือเซตว่าง ($\phi$) และมองกระบวนการทางตรรกศาสตร์เป็นกระบวนการทางเซตแทน. \\
+\subsubsection*{Note (Trick?)}
+สำหรับน้องที่จำสูตรไม่ได้วิธีแนะนำคือลองวาด Venn-Euler diagram โดยมองว่าประพจน์เป็นเซ็ต และ $T$ คือ space $\left( \mathcal{U} \right)$ และ $F$ คือเซตว่าง ($\phi$) และมองกระบวนการทางตรรกศาสตร์เป็นกระบวนการทางเซตแทน. \\
 \begin{itemize}
     \item $\land$ มองเป็น $\cap$
     \item $\lor$ มองเป็น $\cup$
@@ -188,9 +188,10 @@
 Fact: กระบวนการทางเซ็ต (Union, Intersect, etc.) ถูกนิยามโดยตัวดำเนินการทางตรรกศาสตร์
 ตัวอย่างเช่น
 \begin{itemize}
-    \item $A \cup B = \left\{x \in \mathcal{U} | x \in A \lor x\in B \right\}$
-    \item $A \cap B = \left\{x \in \mathcal{U}| x \in A \land x\in B \right\}$
-    \item $\bar{A} = \left\{x \in \mathcal{U}| \neg( x \in A) \right\} = \left\{x \in \mathcal{U}| x \not\in A\right\}$
+    \item $A \cup B = \left\{x \in \mathcal{U} \lvert x \in A \lor x\in B \right\}$
+    \item $A \cap B = \left\{x \in \mathcal{U} \lvert x \in A \land x\in B \right\}$
+    \item $\bar{A} = \left\{x \in \mathcal{U} \lvert \neg( x \in A) \right\} = \left\{x \in \mathcal{U}| x \not\in A\right\}$
+    \item $\overline{(A \cup B)} = \left\{ x \in \mathcal{U} \lvert \neg(x\in A \lor y\in B) \right\} = \left\{ x \in \mathcal{U} \lvert x\not\in A \land x\not\in B \right\}$
 \end{itemize}
 \hrulefill
 \newpage
