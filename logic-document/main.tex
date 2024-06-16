@@ -6,6 +6,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{pstricks}
+\usepackage{pst-barcode}
 %% ---- Set up paper margin ---- %%
 \usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 
@@ -61,7 +63,9 @@
 }
 
 \begin{document}
+
 \maketitle
+
 \section*{ประพจน์ (proposition)}
 ประโยคบอกเล่าหรือประโยคปฏิเสธซึ่งบอกได้ว่า\textbf{จริง (True)} หรือ\textbf{เท็จ (False)}
 \subsection*{ตัวดำเนินการทางตรรกศาสตร์ (Logical operators)}
@@ -174,6 +178,12 @@
     \item $p \land \neg p \equiv F$
     \item $p \lor \neg p \equiv T$
 \end{itemize}
+\paragraph{De Morgan's laws ****}
+\begin{itemize}
+    \item $\neg(p \land q) \equiv \neg p \lor \neg q$
+    \item $\neg(p \lor q) \equiv \neg p \land \neg q$
+\end{itemize}
+
 
 \subsubsection*{Note (Trick?)}
 สำหรับน้องที่จำสูตรไม่ได้วิธีแนะนำคือลองวาด Venn-Euler diagram โดยมองว่าประพจน์เป็นเซ็ต และ $T$ คือ space $\left( \mathcal{U} \right)$ และ $F$ คือเซตว่าง ($\phi$) และมองกระบวนการทางตรรกศาสตร์เป็นกระบวนการทางเซตแทน. \\
