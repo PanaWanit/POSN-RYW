@@ -1,0 +1,339 @@
+\documentclass[10pt]{beamer}
+\usetheme{Ilmenau}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{footline}[page number]
+\beamertemplatenavigationsymbolsempty
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+
+
+\AtBeginSection{
+    \frame{\sectionpage}
+}
+
+% Title page information
+\title{Modular Arithmetic}
+\subtitle{Basic Concepts and Applications}
+\author[Wanitchollakit]{None W., Pana W., Sean W.}
+\date{}
+
+% Custom commands
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Basic Definitions}
+
+\begin{frame}
+    \frametitle{Congruence Modulo n}
+    \begin{definition}
+        Let $n$ be a positive integer. Two integers $a$ and $b$ are \textbf{congruent modulo n} if $n$ divides $(a - b)$.
+
+        We write: $a \equiv b \pmod{n}$
+    \end{definition}
+
+    \vspace{0.5cm}
+
+    \begin{block}{Equivalent Definitions}
+        The following are equivalent:
+        \begin{enumerate}
+            \item $a$ and $b$ have the same remainder when divided by $n$
+            \item $a - b = kn$ for some integer $k$
+            \item $n \mid (a - b)$
+            \item $a \equiv b \pmod{n}$
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Examples of Congruence}
+    \begin{example}
+        \begin{align}
+            17 & \equiv 5 \pmod{12} \quad \text{because } 17 - 5 = 12 = 1 \cdot 12   \\
+            -3 & \equiv 9 \pmod{12} \quad \text{because } -3 - 9 = -12 = -1 \cdot 12 \\
+            25 & \equiv 1 \pmod{12} \quad \text{because } 25 - 1 = 24 = 2 \cdot 12
+        \end{align}
+    \end{example}
+
+    \vspace{0.5cm}
+
+    \begin{block}{Verification by Division}
+        \begin{itemize}
+            \item $17 = 1 \cdot 12 + 5$ (remainder 5)
+            \item $5 = 0 \cdot 12 + 5$ (remainder 5)
+            \item Since both have remainder 5, $17 \equiv 5 \pmod{12}$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Properties of Congruence}
+
+\begin{frame}
+    \frametitle{Properties of Congruence}
+    \begin{theorem}[Basic Properties]
+        Let $n$ be a positive integer. Then congruence modulo $n$ is:
+        \begin{enumerate}
+            \item \textbf{Reflexive:} $a \equiv a \pmod{n}$
+            \item \textbf{Symmetric:} If $a \equiv b \pmod{n}$, then $b \equiv a \pmod{n}$
+            \item \textbf{Transitive:} If $a \equiv b \pmod{n}$ and $b \equiv c \pmod{n}$, then $a \equiv c \pmod{n}$
+        \end{enumerate}
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Arithmetic Properties}
+    \begin{theorem}[Arithmetic with Congruences]
+        If $a \equiv b \pmod{n}$ and $c \equiv d \pmod{n}$, then:
+        \begin{enumerate}
+            \item $a + c \equiv b + d \pmod{n}$
+            \item $a - c \equiv b - d \pmod{n}$
+            \item $ac \equiv bd \pmod{n}$
+            \item $a^k \equiv b^k \pmod{n}$ for any positive integer $k$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{example}
+        Since $17 \equiv 5 \pmod{12}$ and $13 \equiv 1 \pmod{12}$:
+        \begin{align}
+            17 + 13     & \equiv 5 + 1 \equiv 6 \pmod{12}     \\
+            17 \cdot 13 & \equiv 5 \cdot 1 \equiv 5 \pmod{12}
+        \end{align}
+    \end{example}
+\end{frame}
+
+
+
+\section{Applications}
+
+\begin{frame}
+    \frametitle{Computing with Large Numbers}
+    \begin{example}
+        Compute $2^{100} \pmod{7}$.
+    \end{example}
+
+    \begin{block}{Solution}
+        First, let's find the pattern of powers of 2 modulo 7:
+        \begin{align}
+            2^1 & \equiv 2 \pmod{7}                                                                 \\
+            2^2 & \equiv 4 \pmod{7}                                                                 \\
+            2^3 & = 8 \equiv 1 \pmod{7} \quad \text{(loops back to 1)}                              \\
+            2^4 & \equiv 2^3 \cdot 2^1 \equiv 1 \cdot 2 \equiv 2 \pmod{7} \quad \text{(back to 2!)}
+        \end{align}
+
+        The pattern repeats every 3 steps: $2, 4, 1, 2, 4, 1, \ldots$
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Computing with Large Numbers (continued)}
+    \begin{block}{Solution (continued)}
+        Since $100 = 3 \cdot 33 + 1$, we have:
+        \begin{align}
+            2^{100} & = 2^{3 \cdot 33 + 1}               \\
+                    & = (2^3)^{33} \cdot 2^1             \\
+                    & \equiv 1^{33} \cdot 2 \pmod{7}     \\
+                    & \equiv 1 \cdot 2 \equiv 2 \pmod{7}
+        \end{align}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Finding Unit Digits}
+    \begin{example}
+        Find the unit digit of $23^{343}$.
+    \end{example}
+
+    \begin{block}{Solution}
+        To find the unit digit, we compute $23^{343} \pmod{10}$.
+
+        Since $23 \equiv 3 \pmod{10}$, we need to find $3^{343} \pmod{10}$.
+
+        First, let's find the pattern of powers of 3 modulo 10:
+        \begin{align}
+            3^1 & \equiv 3 \pmod{10}                                                                           \\
+            3^2 & \equiv 9 \pmod{10}                                                                           \\
+            3^3 & = 27 \equiv 7 \pmod{10}                                                                      \\
+            3^4 & = 3^3 \cdot 3^1 \equiv 7 \cdot 3 \equiv 21 \equiv 1 \pmod{10} \quad \text{(cycle complete!)}
+        \end{align}
+
+        The pattern repeats every 4 steps: $3, 9, 7, 1, 3, 9, 7, 1, \ldots$
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Finding Unit Digits (continued)}
+    \begin{block}{Solution (continued)}
+        Since $343 = 4 \cdot 85 + 3$, we have:
+        \begin{align}
+            3^{343} & = 3^{4 \cdot 85 + 3}                \\
+                    & = (3^4)^{85} \cdot 3^3              \\
+                    & \equiv 1^{85} \cdot 7 \pmod{10}     \\
+                    & \equiv 1 \cdot 7 \equiv 7 \pmod{10}
+        \end{align}
+
+        Therefore, the unit digit of $23^{343}$ is $\boxed{7}$.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+    \begin{block}{Problem 27, POSN Computer 2562}
+        Find the remainder of $2018^{2019} + 2019^{2020} + 2020^{2021}$ when divided by 13.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Days of the Week}
+    \begin{block}{Day Calculation}
+        We can use modular arithmetic to determine what day of the week a given date falls on.
+
+        Each day corresponds to a number modulo 7:
+        \begin{itemize}
+            \item Sunday = 0, Monday = 1, ..., Saturday = 6
+        \end{itemize}
+    \end{block}
+
+    \begin{example}
+        If today is Wednesday (day 3), what day will it be in 100 days?
+
+        $3 + 100 = 103$
+
+        $103 = 14 \cdot 7 + 5$, so $103 \equiv 5 \pmod{7}$
+
+        Day 5 corresponds to Friday.
+    \end{example}
+\end{frame}
+
+\section{GCD and LCM}
+
+\begin{frame}
+    \frametitle{Greatest Common Divisor (GCD)}
+    \begin{definition}
+        The \textbf{greatest common divisor} of two integers $a$ and $b$ (not both zero) is the largest positive integer that divides both $a$ and $b$.
+
+        We write: $\gcd(a,b)$ or $(a,b)$
+    \end{definition}
+
+    \vspace{0.5cm}
+
+    \begin{block}{Properties}
+        \begin{itemize}
+            \item $\gcd(a,0) = |a|$ for any non-zero integer $a$
+            \item $\gcd(a,b) = \gcd(b,a)$ (symmetry)
+            \item $\gcd(a,b) = \gcd(a, b \bmod a)$ if $a > 0$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Euclidean Algorithm}
+
+    \begin{example}
+        Find $\gcd(252, 105)$:
+        \begin{align}
+            gcd(252, 105) & = \gcd(105, 252 \mod 105) \\
+                          & = \gcd(105, 42)           \\
+                          & = \gcd(42, 105 \mod 42)   \\
+                          & = \gcd(42, 21)            \\
+                          & = \gcd(21, 42 \mod 21)    \\
+                          & = \gcd(21, 0)             \\
+                          & = 21
+        \end{align}
+        Therefore, $\gcd(252,105) = 21$.
+    \end{example}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bézout's Identity}
+    \begin{theorem}[Bézout's Identity]
+        For any integers $a$ and $b$ (not both zero), there exist integers $x$ and $y$ such that:
+        $$ax + by = \gcd(a,b)$$
+
+        These integers $x$ and $y$ are called \textbf{Bézout coefficients}.
+    \end{theorem}
+
+    \vspace{0.5cm}
+
+    \begin{block}{Extended Euclidean Algorithm}
+        We can find the Bézout coefficients by working backwards through the Euclidean algorithm.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bézout's Identity Example}
+    \begin{example}
+        Find integers $x$ and $y$ such that $252x + 105y = \gcd(252,105) = 21$.
+    \end{example}
+
+    \begin{block}{Solution}
+        Working backwards from our Euclidean algorithm:
+        \begin{align}
+            21 & = 105 - 2 \cdot 42                  \\
+               & = 105 - 2 \cdot (252 - 2 \cdot 105) \\
+               & = 105 - 2 \cdot 252 + 4 \cdot 105   \\
+               & = 5 \cdot 105 - 2 \cdot 252         \\
+               & = (-2) \cdot 252 + 5 \cdot 105
+        \end{align}
+
+        Therefore, $x = -2$ and $y = 5$.
+
+        \textbf{Verification:} $252(-2) + 105(5) = -504 + 525 = 21$ \checkmark
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Least Common Multiple (LCM)}
+    \begin{definition}
+        The \textbf{least common multiple} of two positive integers $a$ and $b$ is the smallest positive integer that is divisible by both $a$ and $b$.
+
+        We write: $\text{lcm}(a,b)$ or $[a,b]$
+    \end{definition}
+
+    \vspace{0.5cm}
+
+    \begin{theorem}[Fundamental Relationship]
+        For any positive integers $a$ and $b$:
+        $$\gcd(a,b) \times \text{lcm}(a,b) = a \times b$$
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{GCD and LCM Example}
+    \begin{example}
+        If two number $a$ and $b$ have $\gcd(a,b) = 10$ and $\text{lcm}(a,b) = 100$, find $a \times b$.
+    \end{example}
+
+    \begin{block}{Solution}
+        We know that $\gcd(a,b) \times \text{lcm}(a,b) = a \times b$.
+
+        Therefore, $a \times b = 10 \times 100 = 1000$.
+    \end{block}
+
+
+\end{frame}
+
+\end{document}
