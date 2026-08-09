@@ -9,3 +9,4 @@ Slides and documents for the Rayongwittayakom POSN Computer Tutoring Camp.
 ## Additional Content
 - [Pre-POSN1 Selection Content](https://github.com/NortGlG/PrePOSN1SelectionContent?tab=readme-ov-file) by [NortGlG](https://github.com/NortGlG)
 - [TOI-Zero Solution & Editorial](https://github.com/NortGlG/toi-zero) by [NortGlG](https://github.com/NortGlG)
+- (Recommended) [POSN Qualification](https://github.com/nonewanit/posn-qualification) by [None Wanitchollakit](https://github.com/nonewanit)
